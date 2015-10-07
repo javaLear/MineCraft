@@ -1,7 +1,5 @@
 package minecraft;
 
-import herramientas.HerramientaStrategy;
-
 public class Jugador {
 	
 	private static Jugador jugador;
