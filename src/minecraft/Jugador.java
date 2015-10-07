@@ -1,7 +1,6 @@
 package minecraft;
 
-import java.util.LinkedList;
-import herramientas.*;
+import herramientas.HerramientaStrategy;
 
 public class Jugador {
 	
