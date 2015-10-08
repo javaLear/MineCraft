@@ -2,7 +2,7 @@ package cubos;
 
 /**
  * 
- * @author jscruz
+ * @author team HS
  */
 public class Tierra extends Cubo {
 

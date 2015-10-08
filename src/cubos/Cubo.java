@@ -3,7 +3,7 @@ package cubos;
 /**
  * Todos los elementos cubo tienen una posicion en el espacio minecraft.
  * 
- * @author jscruz
+ * @author team HS
  */
 public abstract class Cubo implements Element {
 

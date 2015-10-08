@@ -3,17 +3,17 @@ package minecraft;
 import herramientas.HerramientaStrategy;
 
 public class Jugador {
-	
+
 	private static Jugador jugador;
 	private HerramientaStrategy herramienta;
-	//private LinkedList<Cubo> mochila = new LinkedList<Cubo>();
-	
-	private Jugador(){
-		
+	// private LinkedList<Cubo> mochila = new LinkedList<Cubo>();
+
+	private Jugador() {
+
 	}
-	
-	public static Jugador getJugador(){
-		if(jugador == null){
+
+	public static Jugador getJugador() {
+		if (jugador == null) {
 			jugador = new Jugador();
 		}
 		return jugador;
@@ -24,10 +24,10 @@ public class Jugador {
 	}
 
 	public void tomar(HerramientaStrategy herramienta) {
-		if(this.herramienta == null){
+		if (this.herramienta == null) {
 			this.herramienta = herramienta;
 			System.out.println("Tengo una nueva herramienta .." + herramienta.getClass().getSimpleName());
-		}else{
+		} else {
 			System.out.println("Tengo las manos ocupadas");
 		}
 	}
@@ -42,10 +42,10 @@ public class Jugador {
 
 	public void guardarHerramienta() {
 		try {
-			if(this.herramienta.getEstado().equals("limpia")){				
+			if (this.herramienta.getEstado().equals("limpia")) {
 				this.herramienta.guardar();
 				this.herramienta = null;
-			}else{
+			} else {
 				System.out.println("Primero tengo que limpiar la herramienta");
 			}
 		} catch (NullPointerException e) {
@@ -70,5 +70,5 @@ public class Jugador {
 		}
 
 	}
-	
+
 }
