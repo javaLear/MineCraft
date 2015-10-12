@@ -1,13 +1,8 @@
 package minecraft;
 
-import java.util.Random;
-
 import cubos.Aire;
-import cubos.Arena;
 import cubos.Cubo;
-import cubos.Madera;
 import cubos.Piedra;
-import cubos.Tierra;
 
 /**
  * Clase Principal encargada de generar el mundo.
@@ -19,12 +14,10 @@ public class Minecraft {
 	public static final int SIZE = 10;
 
 	private Cubo[][][] mundo;
-	private Random genran;
 
 	private int cielo;
 
 	public Minecraft() {
-		genran = new Random();
 		mundo = new Cubo[SIZE][SIZE][SIZE];
 
 		// 25% de la parte de arriba del mundo
@@ -42,7 +35,7 @@ public class Minecraft {
 
 		for (int i = 0; i < mundo.length; i++) {
 			for (int j = 0; j < mundo[i].length; j++) {
-				for (int k = 0; k < mundo[j].length; k++) {
+				for (int k = 0; k < mundo[i][j].length; k++) {
 
 					mundo[i][j][k] = generarCubo(i, j, k);
 					System.out.println(String.format(format, i, j, k, mundo[i][j][k].getClass()));
@@ -62,7 +55,7 @@ public class Minecraft {
 	private Cubo generarCubo(int posX, int posY, int posZ) {
 		Cubo cubo = null;
 
-		// base
+		// base o piso
 		if (posZ == 0) {
 			cubo = new Piedra(posX, posY, posZ);
 
@@ -72,74 +65,8 @@ public class Minecraft {
 
 		} // resto
 		else {
-
-			cubo = this.generarCuboConReglas(posX, posY, posZ);
-		}
-
-		return cubo;
-	}
-
-	private Cubo generarCuboConReglas(int posX, int posY, int posZ) {
-		Cubo cubo = null;
-
-		// obtener el elemnto que se encuentra abajo z
-		Cubo cuboAbajoZ = mundo[posX][posY][posZ - 1];
-
-		// obtener los posibles elementos que se pueden poner encima de ese
-		// elemento
-		if (cuboAbajoZ instanceof Piedra) {
-			// piedra o arena o tieerra
-			int gen = genran.nextInt(3);
-
-			if (gen == 0) {
-				cubo = new Piedra(posX, posY, posZ);
-
-			} else if (gen == 1) {
-				cubo = new Arena(posX, posY, posZ);
-
-			} else if (gen == 2) {
-				cubo = new Tierra(posX, posY, posZ);
-			}
-
-		} else if (cuboAbajoZ instanceof Arena) {
-			// tierra o arena o aire
-			int gen = genran.nextInt(2);
-
-			if (gen == 0) {
-				cubo = new Arena(posX, posY, posZ);
-
-			} else if (gen == 1) {
-				cubo = new Tierra(posX, posY, posZ);
-			}
-
-		} else if (cuboAbajoZ instanceof Tierra) {
-			// tierra o madera o aire
-			int gen = genran.nextInt(3);
-
-			if (gen == 0) {
-				cubo = new Tierra(posX, posY, posZ);
-
-			} else if (gen == 1) {
-				cubo = new Madera(posX, posY, posZ);
-
-			} else if (gen == 2) {
-				cubo = new Aire(posX, posY, posZ);
-			}
-
-		} else if (cuboAbajoZ instanceof Madera) {
-			// madera o aire
-			int gen = genran.nextInt(2);
-
-			if (gen == 0) {
-				cubo = new Madera(posX, posY, posZ);
-
-			} else if (gen == 1) {
-				cubo = new Aire(posX, posY, posZ);
-			}
-
-		} else if (cuboAbajoZ instanceof Aire) {
-
-			cubo = new Aire(posX, posY, posZ);
+			Cubo cuboAbajoZ = mundo[posX][posY][posZ - 1];
+			cubo = cuboAbajoZ.getCuboPosible(posX, posY, posZ);
 		}
 
 		return cubo;
@@ -147,7 +74,6 @@ public class Minecraft {
 
 	public static void main(String args[]) {
 		new Minecraft();
-
 	}
 
 	public Cubo[][][] getMundo() {

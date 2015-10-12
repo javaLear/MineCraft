@@ -10,6 +10,11 @@ public class Aire extends Cubo {
 		super(posX, posY, posZ);
 		// TODO Auto-generated constructor stub
 	}
-	
-	
+
+	@Override
+	public Cubo getCuboPosible(int posX, int posY, int posZ) {
+		return new Aire(posX, posY, posZ);
+
+	}
+
 }
