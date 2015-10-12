@@ -15,7 +15,7 @@ public class Jugador {
 
 	private Jugador(){
 		
-		this.ubicacion = new GPS(new Aire(0,0,0), 1, 'X');
+		this.ubicacion = new GPS(new Aire(0,0,9), 1, 'X');
 	}
 	
 	public static Jugador getJugador(){
@@ -38,14 +38,17 @@ public class Jugador {
 		}
 	}
 
-	public void trabajar(Cubo cubo) {
+	public void trabajar() {
 		try {
+			Cubo cubo = getCuboTrabajar();
 			if(this.herramienta.utilizar(cubo)){
 				almacen.add(cubo);
-				System.out.println("Guardo cubo de "+ cubo.getClass().getSimpleName()+ " en almacen");
+				System.out.println("Guardo cubo de "+ cubo.getClass().getSimpleName()+ " en almacen.");
 			}
 		} catch (NullPointerException e) {
 			System.out.println("No tengo herramienta");
+		} catch (ArrayIndexOutOfBoundsException e) {
+			System.out.println("No puedes trabjar aqui. [Limite del Mundo]");
 		}
 	}
 
@@ -79,22 +82,36 @@ public class Jugador {
 		}
 
 	}
+	
+	private Cubo getCuboTrabajar(){
+		int x = this.ubicacion.getPosicion().getPosX();
+		int y = this.ubicacion.getPosicion().getPosY();
+		int z = this.ubicacion.getPosicion().getPosZ();
+		
+		if(this.ubicacion.getDireccion() == 'X'){
+			x = x + this.ubicacion.getSentido();
+		}else{
+			y = y + this.ubicacion.getSentido();
+		}
+		
+		return Mundo.getInstance().getCubo(x, y, z);
+	}
 
 	private void Movimiento(){
-		switch (this.ubicacion.getDireccion()) {
-		case 'X':
+		if(this.ubicacion.getDireccion() == 'X'){
 			this.mover = new X();
-			break;
-
-		case 'Y':
+		}else{
 			this.mover = new X();
-			break;
 		}
 	}
 	
 	public void avanzar(){
-		Movimiento();
-		//this.mover.adelante(this.ubicacion);
+		try {
+			Movimiento();
+			this.mover.adelante(this.ubicacion);
+		} catch (ArrayIndexOutOfBoundsException e) {
+			System.out.println("No puedes avanzar. [Limite del Mundo]");
+		}
 	}
 	
 	public void girarAtras(){
@@ -108,6 +125,7 @@ public class Jugador {
 	}
 	
 	public void girarIzquierda(){
+		Movimiento();
 		this.mover.izquierda(this.ubicacion);
 	}
 	

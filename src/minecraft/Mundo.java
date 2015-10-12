@@ -83,4 +83,7 @@ public class Mundo {
 		return this.cielo;
 	}
 
+	public Cubo getCubo(int x, int y, int z){
+		return this.cubos[x][y][z];
+	}
 }
