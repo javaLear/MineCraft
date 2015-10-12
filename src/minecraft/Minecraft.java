@@ -14,18 +14,24 @@ public class Minecraft {
 
 	public static void main(String args[]) {
 
-		// Minecraft minecraft = new Minecraft();
+		Mundo mundo = Mundo.getInstance();
 		Jugador jugador = Jugador.getJugador();
-		jugador.trabajar(new Arena(1, 0, 0));
+		jugador.trabajar();
 		jugador.tomar(new Pico());
-		jugador.tomar(new Pala());
+		jugador.trabajar();
+		jugador.avanzar();
+		jugador.girarAtras();
+		jugador.avanzar();
+		jugador.trabajar();
 		jugador.guardarHerramienta();
 		jugador.tomar(new Pala());
-		jugador.trabajar(new Arena(1,0,0));
+		jugador.trabajar();
+		jugador.avanzar();
+		jugador.trabajar();
 		jugador.guardarHerramienta();
 		jugador.limpiarHerramienta();
 		jugador.guardarHerramienta();
-
+		
 	}
 
 }
