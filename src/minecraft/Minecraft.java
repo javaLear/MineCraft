@@ -1,13 +1,8 @@
 package minecraft;
 
 import java.util.Random;
-
-import cubos.Aire;
-import cubos.Arena;
-import cubos.Cubo;
-import cubos.Madera;
-import cubos.Piedra;
-import cubos.Tierra;
+import herramientas.*;
+import cubos.*;
 
 public class Minecraft {
 
@@ -60,12 +55,18 @@ public class Minecraft {
 	}
 
 	public static void main(String args[]) {
-		Minecraft minecraft = new Minecraft();
-//		Random ran = new Random();
-//		for (int i = 0; i < 10; i++) {
-//			System.out.println(ran.nextInt(10));
-//		}
-		
+		//Minecraft minecraft = new Minecraft();
+		Jugador jugador = Jugador.getJugador();
+		jugador.trabajar(new Arena(1,0,0));
+		jugador.tomar(new Pico());
+		jugador.tomar(new Pala());
+		jugador.guardarHerramienta();
+		jugador.tomar(new Pala());
+		jugador.trabajar(new Arena(1,0,0));
+		jugador.guardarHerramienta();
+		jugador.limpiarHerramienta();
+		jugador.guardarHerramienta();
+
 	}
 	
 }

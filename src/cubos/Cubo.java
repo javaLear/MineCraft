@@ -1,5 +1,7 @@
 package cubos;
 
+import herramientas.*;
+
 /**
  * Todos los elementos cubo tienen una posicion en el espacio minecraft.
  * 
@@ -28,5 +30,7 @@ public abstract class Cubo implements Element {
 	public int getPosZ() {
 		return posZ;
 	}
+	
+	public abstract HerramientaStrategy herramienta();
 
 }

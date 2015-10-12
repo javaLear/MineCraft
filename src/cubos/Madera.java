@@ -1,5 +1,7 @@
 package cubos;
 
+import herramientas.*;
+
 /**
  * 
  * @author jscruz
@@ -11,4 +13,8 @@ public class Madera extends Cubo
 		super(posX, posY, posZ);
 	}
 	
+	@Override
+	public HerramientaStrategy herramienta() {
+		return new Hacha();
+	}
 }

@@ -1,15 +1,21 @@
 package minecraft;
 
-import herramientas.HerramientaStrategy;
+import java.util.LinkedList;
+import herramientas.*;
+import cubos.*;
+import movimiento.*;
 
 public class Jugador {
 	
 	private static Jugador jugador;
 	private HerramientaStrategy herramienta;
-	//private LinkedList<Cubo> mochila = new LinkedList<Cubo>();
+	private LinkedList<Cubo> almacen = new LinkedList<Cubo>();
+	private GPS ubicacion;
+	private Movimiento mover;
 	
 	private Jugador(){
 		
+		this.ubicacion = new GPS(new Aire(0,0,0), 1, 'X');
 	}
 	
 	public static Jugador getJugador(){
@@ -32,9 +38,12 @@ public class Jugador {
 		}
 	}
 
-	public void trabajar() {
+	public void trabajar(Cubo cubo) {
 		try {
-			this.herramienta.utilizar();
+			if(this.herramienta.utilizar(cubo)){
+				almacen.add(cubo);
+				System.out.println("Guardo cubo de "+ cubo.getClass().getSimpleName()+ " en almacen");
+			}
 		} catch (NullPointerException e) {
 			System.out.println("No tengo herramienta");
 		}
@@ -69,6 +78,37 @@ public class Jugador {
 			System.out.println("No tengo herramienta");
 		}
 
+	}
+	
+	private void Movimiento(){
+		switch (this.ubicacion.getDireccion()) {
+		case 'X':
+			this.mover = new X();
+			break;
+
+		case 'Y':
+			this.mover = new X();
+			break;
+		}
+	}
+	
+	public void avanzar(){
+		Movimiento();
+		//this.mover.adelante(this.ubicacion);
+	}
+	
+	public void girarAtras(){
+		Movimiento();
+		this.mover.atras(this.ubicacion);
+	}
+	
+	public void girarDerecha(){
+		Movimiento();
+		this.mover.derecha(this.ubicacion);
+	}
+	
+	public void girarIzquierda(){
+		this.mover.izquierda(this.ubicacion);
 	}
 	
 }

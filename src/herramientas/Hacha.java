@@ -1,12 +1,20 @@
 package herramientas;
 
-public class Hacha extends HerramientaStrategy{
+import cubos.*;
 
+public class Hacha extends HerramientaStrategy{
+	
 	@Override
-	public void utilizar() {
-		super.utilizar();
-		System.out.println("Cortando");
+	public boolean utilizar(Cubo cubo) {
+		boolean res = false;
+		if(this.equals(cubo.herramienta())){
+			res = super.utilizar(cubo);
+			System.out.println("Cortando");
+		}else{
+			System.out.println("No puedes utilizar el Hacha en " + cubo.getClass().getSimpleName());
+		}
 		
+		return res;
 	}
 
 	@Override
@@ -16,7 +24,7 @@ public class Hacha extends HerramientaStrategy{
 
 	@Override
 	public void limpiar() {
-		super.utilizar();
+		super.limpiar();
 		System.out.println("Limpio el Hacha");		
 	}
 
