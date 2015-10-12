@@ -13,17 +13,17 @@ public class MinecraftTest {
 
 	@Test
 	public void testStoneBase() {
-		Minecraft minecraft = new Minecraft();
-		Cubo[][][] mundo = minecraft.getMundo();
+		Mundo mundo = Mundo.getInstance();
+		Cubo[][][] cubos = mundo.getCubos();
 		
 		String failMsg = "Cubo en la pos %d, %d, %d no es %s.";
 		
-		for (int i = 0; i < mundo.length; i++) {
-			for (int j = 0; j < mundo[i].length; j++) {
-				for (int k = 0; k < mundo[i][j].length; k++) {
+		for (int i = 0; i < cubos.length; i++) {
+			for (int j = 0; j < cubos[i].length; j++) {
+				for (int k = 0; k < cubos[i][j].length; k++) {
 					
 					if (k == 0 ) {
-						if (!(mundo[i][j][k] instanceof Piedra)) {
+						if (!(cubos[i][j][k] instanceof Piedra)) {
 							fail(String.format(failMsg, i, j, k, "Piedra"));
 						}
 					} 
@@ -36,17 +36,17 @@ public class MinecraftTest {
 	
 	@Test
 	public void testAirTop() {
-		Minecraft minecraft = new Minecraft();
-		Cubo[][][] mundo = minecraft.getMundo();
+		Mundo mundo = Mundo.getInstance();
+		Cubo[][][] cubos = mundo.getCubos();
 		
 		String failMsg = "Cubo en la pos %d, %d, %d no es Aire.";
 		
-		for (int i = 0; i < mundo.length; i++) {
-			for (int j = 0; j < mundo[i].length; j++) {
-				for (int k = 0; k < mundo[i][j].length; k++) {
+		for (int i = 0; i < cubos.length; i++) {
+			for (int j = 0; j < cubos[i].length; j++) {
+				for (int k = 0; k < cubos[i][j].length; k++) {
 					
-					if (k >= Minecraft.SIZE - minecraft.getCielo()) {
-						if (!(mundo[i][j][k] instanceof Aire)) {
+					if (k >= Mundo.SIZE - mundo.getCielo()) {
+						if (!(cubos[i][j][k] instanceof Aire)) {
 							fail(String.format(failMsg, i, j, k));
 						}
 					}
