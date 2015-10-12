@@ -12,7 +12,7 @@ public class Jugador {
 	private LinkedList<Cubo> almacen = new LinkedList<Cubo>();
 	private GPS ubicacion;
 	private Movimiento mover;
-	
+
 	private Jugador(){
 		
 		this.ubicacion = new GPS(new Aire(0,0,0), 1, 'X');
@@ -30,10 +30,10 @@ public class Jugador {
 	}
 
 	public void tomar(HerramientaStrategy herramienta) {
-		if(this.herramienta == null){
+		if (this.herramienta == null) {
 			this.herramienta = herramienta;
 			System.out.println("Tengo una nueva herramienta .." + herramienta.getClass().getSimpleName());
-		}else{
+		} else {
 			System.out.println("Tengo las manos ocupadas");
 		}
 	}
@@ -51,10 +51,10 @@ public class Jugador {
 
 	public void guardarHerramienta() {
 		try {
-			if(this.herramienta.getEstado().equals("limpia")){				
+			if (this.herramienta.getEstado().equals("limpia")) {
 				this.herramienta.guardar();
 				this.herramienta = null;
-			}else{
+			} else {
 				System.out.println("Primero tengo que limpiar la herramienta");
 			}
 		} catch (NullPointerException e) {
@@ -79,7 +79,7 @@ public class Jugador {
 		}
 
 	}
-	
+
 	private void Movimiento(){
 		switch (this.ubicacion.getDireccion()) {
 		case 'X':
@@ -112,3 +112,5 @@ public class Jugador {
 	}
 	
 }
+
+

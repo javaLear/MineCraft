@@ -3,8 +3,8 @@ package cubos;
 /**
  * Inteface para todos los elementos del mundo minecraft.
  * 
- * @author jscruz
+ * @author team HS
  */
 public interface Element {
-	
+
 }

@@ -4,7 +4,7 @@ import herramientas.HerramientaStrategy;
 
 /**
  * 
- * @author jscruz
+ * @author team HS
  */
 public class Aire extends Cubo {
 
@@ -13,8 +13,15 @@ public class Aire extends Cubo {
 	}
 
 	@Override
+	public Cubo getCuboPosible(int posX, int posY, int posZ) {
+		return new Aire(posX, posY, posZ);
+
+	}
+
+	@Override
 	public HerramientaStrategy herramienta() {
 		return null;
 	}
 
 }
+

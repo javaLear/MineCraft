@@ -1,6 +1,5 @@
 package movimiento;
 
-
 import cubos.*;
 import minecraft.GPS;
 
@@ -51,5 +50,4 @@ public class X extends Movimiento{
 	public void izquierda(GPS jugador) {
 		jugador.setDireccion('Y');	
 	}
-	
 }
