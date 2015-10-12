@@ -1,12 +1,19 @@
 package herramientas;
 
-public class Pala extends HerramientaStrategy{
+import cubos.*;
 
+public class Pala extends HerramientaStrategy{
+	
 	@Override
-	public void utilizar() {
-		super.utilizar();
-		System.out.println("Cavando");
-		
+	public boolean utilizar(Cubo cubo) {
+		boolean res = false;
+		if(this.getClass().equals(cubo.herramienta().getClass())){
+			res = super.utilizar(cubo);
+			System.out.println("Cavando");
+		}else{
+			System.out.println("No puedes utilizar la Pala en " + cubo.getClass().getSimpleName());
+		}
+		return res;
 	}
 
 	@Override
@@ -16,7 +23,7 @@ public class Pala extends HerramientaStrategy{
 
 	@Override
 	public void limpiar() {
-		super.utilizar();
+		super.limpiar();
 		System.out.println("Limpio la Pala");		
 	}
 

@@ -1,8 +1,11 @@
 package minecraft;
 
 import cubos.Aire;
+import cubos.Arena;
 import cubos.Cubo;
 import cubos.Piedra;
+import herramientas.Pala;
+import herramientas.Pico;
 
 /**
  * Clase Principal encargada de generar el mundo.
@@ -73,7 +76,17 @@ public class Minecraft {
 	}
 
 	public static void main(String args[]) {
-		new Minecraft();
+		//Minecraft minecraft = new Minecraft();
+		Jugador jugador = Jugador.getJugador();
+		jugador.trabajar(new Arena(1,0,0));
+		jugador.tomar(new Pico());
+		jugador.tomar(new Pala());
+		jugador.guardarHerramienta();
+		jugador.tomar(new Pala());
+		jugador.trabajar(new Arena(1,0,0));
+		jugador.guardarHerramienta();
+		jugador.limpiarHerramienta();
+		jugador.guardarHerramienta();
 	}
 
 	public Cubo[][][] getMundo() {

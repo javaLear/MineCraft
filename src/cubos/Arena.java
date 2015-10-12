@@ -1,11 +1,12 @@
 package cubos;
 
+import herramientas.*;
+
 /**
  * 
  * @author team HS
  */
-public class Arena extends Cubo
-{
+public class Arena extends Cubo {
 	public Arena(int posX, int posY, int posZ) {
 		super(posX, posY, posZ);
 	}
@@ -21,8 +22,13 @@ public class Arena extends Cubo
 		} else if (gen == 1) {
 			cubo = new Tierra(posX, posY, posZ);
 		}
-		
+
 		return cubo;
 	}
-	
+
+	@Override
+	public HerramientaStrategy herramienta() {
+		return new Pala();
+	}
+
 }

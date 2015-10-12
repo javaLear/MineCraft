@@ -1,5 +1,7 @@
 package cubos;
 
+import herramientas.*;
+
 /**
  * 
  * @author team HS
@@ -27,6 +29,11 @@ public class Tierra extends Cubo {
 			cubo = new Aire(posX, posY, posZ);
 		}
 		return cubo;
+	}
+
+	@Override
+	public HerramientaStrategy herramienta() {
+		return new Pala();
 	}
 
 }

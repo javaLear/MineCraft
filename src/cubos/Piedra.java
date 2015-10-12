@@ -1,5 +1,7 @@
 package cubos;
 
+import herramientas.*;
+
 /**
  * 
  * @author team HS
@@ -9,7 +11,7 @@ public class Piedra extends Cubo {
 	public Piedra(int posX, int posY, int posZ) {
 		super(posX, posY, posZ);
 	}
-	
+
 	public Cubo getCuboPosible(int posX, int posY, int posZ) {
 		Cubo cubo = null;
 		int gen = CuboHelper.getRandomInt(3);
@@ -24,5 +26,10 @@ public class Piedra extends Cubo {
 			cubo = new Tierra(posX, posY, posZ);
 		}
 		return cubo;
+	}
+
+	@Override
+	public HerramientaStrategy herramienta() {
+		return new Pico();
 	}
 }

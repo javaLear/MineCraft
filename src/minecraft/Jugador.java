@@ -1,19 +1,24 @@
 package minecraft;
 
-import herramientas.HerramientaStrategy;
+import java.util.LinkedList;
+import herramientas.*;
+import cubos.*;
+import movimiento.*;
 
 public class Jugador {
-
+	
 	private static Jugador jugador;
 	private HerramientaStrategy herramienta;
-	// private LinkedList<Cubo> mochila = new LinkedList<Cubo>();
-
-	private Jugador() {
-
+	private LinkedList<Cubo> almacen = new LinkedList<Cubo>();
+	private GPS ubicacion;
+	
+	private Jugador(){
+		
+		this.ubicacion = new GPS(new Aire(0,0,0), 1, 'X');
 	}
-
-	public static Jugador getJugador() {
-		if (jugador == null) {
+	
+	public static Jugador getJugador(){
+		if(jugador == null){
 			jugador = new Jugador();
 		}
 		return jugador;
@@ -32,9 +37,12 @@ public class Jugador {
 		}
 	}
 
-	public void trabajar() {
+	public void trabajar(Cubo cubo) {
 		try {
-			this.herramienta.utilizar();
+			if(this.herramienta.utilizar(cubo)){
+				almacen.add(cubo);
+				System.out.println("Guardo cubo de "+ cubo.getClass().getSimpleName()+ " en almacen");
+			}
 		} catch (NullPointerException e) {
 			System.out.println("No tengo herramienta");
 		}

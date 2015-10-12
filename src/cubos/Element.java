@@ -6,5 +6,5 @@ package cubos;
  * @author team HS
  */
 public interface Element {
-	
+
 }
