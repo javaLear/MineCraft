@@ -33,5 +33,10 @@ public class Piedra extends Cubo {
 		return new Pico();
 	}
 
+	@Override
+	public boolean afectaGravedad() {
+		return false;
+	}
+
 }
 

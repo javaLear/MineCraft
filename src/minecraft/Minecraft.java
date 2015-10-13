@@ -1,6 +1,5 @@
 package minecraft;
 
-import cubos.Arena;
 import herramientas.Pala;
 import herramientas.Pico;
 
@@ -16,22 +15,24 @@ public class Minecraft {
 
 		Mundo mundo = Mundo.getInstance();
 		Jugador jugador = Jugador.getJugador();
+		
 		jugador.trabajar();
 		jugador.tomar(new Pico());
+		
 		jugador.trabajar();
 		jugador.avanzar();
 		jugador.girarAtras();
 		jugador.avanzar();
 		jugador.trabajar();
 		jugador.guardarHerramienta();
+		
 		jugador.tomar(new Pala());
 		jugador.trabajar();
 		jugador.avanzar();
 		jugador.trabajar();
 		jugador.guardarHerramienta();
+		
 		jugador.limpiarHerramienta();
 		jugador.guardarHerramienta();
-		
 	}
-
 }

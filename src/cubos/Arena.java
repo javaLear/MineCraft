@@ -30,5 +30,10 @@ public class Arena extends Cubo {
 	public HerramientaStrategy herramienta() {
 		return new Pala();
 	}
+
+	@Override
+	public boolean afectaGravedad() {
+		return true;
+	}
 	
 }

@@ -17,7 +17,6 @@ public abstract class Cubo implements Element {
 		this.posX = posX;
 		this.posY = posY;
 		this.posZ = posZ;
-
 	}
 
 	public int getPosX() {
@@ -50,4 +49,6 @@ public abstract class Cubo implements Element {
 
 	public abstract HerramientaStrategy herramienta();
 
+	public abstract boolean afectaGravedad();
+	
 }

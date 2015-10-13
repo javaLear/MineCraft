@@ -86,4 +86,39 @@ public class Mundo {
 	public Cubo getCubo(int x, int y, int z){
 		return this.cubos[x][y][z];
 	}
+
+	/**
+	 * Reemplazar el cubo que el jugardor saco por uno de aire
+	 * si hay arena encima debe caerse
+	 * 
+	 * @param cuboReemplazar
+	 */
+	public void removerCubo(Cubo cuboReemplazar) {
+		int x = cuboReemplazar.getPosX();
+		int y = cuboReemplazar.getPosY();
+		int z = cuboReemplazar.getPosZ();
+		
+		int newZ = z + 1;
+		if (existeArriba(newZ)) {
+			Cubo cuboArriba = this.cubos[x][y][newZ];
+			
+			if (cuboArriba.afectaGravedad()) {
+				//se cae todo se cae y arriba queda un nuevo cubo de aire
+				System.out.println("Mundo>> Elemento " + (this.cubos[x][y][newZ]).getClass().getSimpleName() + " cae a X:" + x + " Y: " + y + " Z:" + z);
+				this.cubos[x][y][z] = this.cubos[x][y][newZ];
+				this.removerCubo(this.cubos[x][y][newZ]);
+			} else {
+				//se reemplaza por uno de aire
+				System.out.println(String.format("Mundo>> ElementoPosX: %d - PosY: %d - PosZ: %d ahora tiene Aire", x, y, z));
+				this.cubos[x][y][z] = new Aire(x, y, z);
+			}
+		} else {
+			this.cubos[x][y][z] = new Aire(x, y, z);
+		}
+	}
+	
+	
+	private boolean existeArriba(int aPosZ) {
+		return aPosZ >= 0 && aPosZ < SIZE;
+	}
 }

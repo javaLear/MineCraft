@@ -14,8 +14,20 @@ public class Aire extends Cubo {
 
 	@Override
 	public Cubo getCuboPosible(int posX, int posY, int posZ) {
-		return new Aire(posX, posY, posZ);
+		Cubo cubo = null;
+		int random = CuboHelper.getRandomInt(3);
 
+		if (random == 0) {
+			cubo = new Tierra(posX, posY, posZ);
+
+		} else if (random == 1) {
+			cubo = new Piedra(posX, posY, posZ);
+
+		} else {
+			cubo = new Aire(posX, posY, posZ);
+		}
+		
+		return cubo;
 	}
 
 	@Override
@@ -23,5 +35,9 @@ public class Aire extends Cubo {
 		return null;
 	}
 
-}
+	@Override
+	public boolean afectaGravedad() {
+		return false;
+	}
 
+}

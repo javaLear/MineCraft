@@ -31,7 +31,7 @@ public class MinecraftTest {
 			}
 		}
 		
-		Assert.assertTrue(1 == 1);
+		Assert.assertTrue(true);
 	}
 	
 	@Test
@@ -55,7 +55,7 @@ public class MinecraftTest {
 			}
 		}
 		
-		Assert.assertTrue(1 == 1);
+		Assert.assertTrue(true);
 	}
 
 }

@@ -26,9 +26,9 @@ public class X extends Movimiento{
 			newPos = Mundo.getInstance().getCubo(x, y, z++);
 			
 			if(z == oldPos.getPosZ()){
-				System.out.println("Avanza a la posicion ["+x+","+y+","+z+"]");
+				System.out.println("Jugador Avanza a la posicion ["+x+","+y+","+z+"]");
 			}else{
-				System.out.println("Cae a la posicion ["+x+","+y+","+z+"]");
+				System.out.println("Jugador Cae a la posicion ["+x+","+y+","+z+"]");
 			}		
 			
 			jugador.setPosicion(newPos);

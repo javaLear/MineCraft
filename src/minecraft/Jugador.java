@@ -41,8 +41,10 @@ public class Jugador {
 	public void trabajar() {
 		try {
 			Cubo cubo = getCuboTrabajar();
-			if(this.herramienta.utilizar(cubo)){
+			if (this.herramienta.utilizar(cubo)) {
 				almacen.add(cubo);
+				Mundo.getInstance().removerCubo(cubo);
+				
 				System.out.println("Guardo cubo de "+ cubo.getClass().getSimpleName()+ " en almacen.");
 			}
 		} catch (NullPointerException e) {

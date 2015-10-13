@@ -32,5 +32,10 @@ public class Madera extends Cubo {
 		return new Hacha();
 	}
 
+	@Override
+	public boolean afectaGravedad() {
+		return false;
+	}
+
 }
 

@@ -36,4 +36,9 @@ public class Tierra extends Cubo {
 		return new Pala();
 	}
 
+	@Override
+	public boolean afectaGravedad() {
+		return false;
+	}
+
 }
