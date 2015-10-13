@@ -7,7 +7,7 @@ import cubos.Piedra;
 public class Mundo {
 
 	private static Mundo instance;
-	public static final int SIZE = 10;
+	public static final int SIZE = 100;
 
 	private Cubo[][][] cubos;
 
@@ -34,14 +34,14 @@ public class Mundo {
 	 * LLena el mundo de cubos.
 	 */
 	private void generarMundo() {
-		String format = "Generated Element for the x=%d, y=%d, z=%d %s";
+//		String format = "Generated Element for the x=%d, y=%d, z=%d %s";
 
 		for (int i = 0; i < cubos.length; i++) {
 			for (int j = 0; j < cubos[i].length; j++) {
 				for (int k = 0; k < cubos[i][j].length; k++) {
 
 					cubos[i][j][k] = generarCubo(i, j, k);
-					System.out.println(String.format(format, i, j, k, cubos[i][j][k].getClass()));
+					//System.out.println(String.format(format, i, j, k, cubos[i][j][k].getClass()));
 				}
 			}
 		}
